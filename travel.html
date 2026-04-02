@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅游 - 刘涛的博客</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Tao's Blog</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 旅游专题头部 -->
+    <header class="category-hero" id="travelHero">
+        <div class="category-hero-bg" id="heroBg"></div>
+        <div class="category-hero-overlay"></div>
+        <div class="category-hero-content">
+            <div class="category-badge">Travel</div>
+            <h1 class="category-hero-title">用脚步丈量世界</h1>
+            <p class="category-hero-subtitle">记录旅途中的风景与故事</p>
+        </div>
+    </header>
+
+    <!-- 旅游故事列表 -->
+    <main class="travel-content">
+        <div class="travel-stories" id="travel-stories">
+            <!-- 旅游故事将通过JS动态插入 -->
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 刘涛. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#">GitHub</a>
+                <a href="#">Email</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 动态生成导航
+            const navLinks = document.getElementById('navLinks');
+            config.categories.forEach(cat => {
+                const li = document.createElement('li');
+                const isActive = cat.id === 'travel';
+                li.innerHTML = `<a href="${cat.slug}.html" class="${isActive ? 'active' : ''}">${cat.name}</a>`;
+                navLinks.appendChild(li);
+            });
+
+            const aboutLi = document.createElement('li');
+            aboutLi.innerHTML = '<a href="about.html">关于</a>';
+            navLinks.appendChild(aboutLi);
+
+            // 设置旅游分类的背景
+            const travelCat = config.categories.find(c => c.id === 'travel');
+            if (travelCat) {
+                const heroBg = document.getElementById('heroBg');
+                if (travelCat.bgImage) {
+                    heroBg.style.backgroundImage = `url(${travelCat.bgImage})`;
+                } else {
+                    heroBg.style.background = travelCat.bgColor;
+                }
+
+                document.getElementById('travelHero').querySelector('.category-hero-title').textContent = travelCat.name;
+                document.getElementById('travelHero').querySelector('.category-hero-subtitle').textContent = travelCat.description;
+                document.querySelector('.category-badge').textContent = travelCat.name;
+            }
+
+            // 渲染旅游故事
+            renderTravelStories();
+        });
+    </script>
+</body>
+</html>

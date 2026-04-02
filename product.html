@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品 - 刘涛的博客</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Tao's Blog</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 旅游专题头部 -->
+    <header class="category-hero" id="travelHero">
+        <div class="category-hero-bg" id="heroBg"></div>
+        <div class="category-hero-overlay"></div>
+        <div class="category-hero-content">
+            <div class="category-badge">Travel</div>
+            <h1 class="category-hero-title">用脚步丈量世界</h1>
+            <p class="category-hero-subtitle">记录旅途中的风景与故事</p>
+        </div>
+    </header>
+
+    <!-- 旅游故事列表 -->
+    <main class="travel-content">
+        <div class="travel-stories" id="travel-stories">
+            <!-- 旅游故事将通过JS动态插入 -->
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 刘涛. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#">GitHub</a>
+                <a href="#">Email</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryId = 'product';
+            // 动态生成导航
+            const navLinks = document.getElementById('navLinks');
+            config.categories.forEach(cat => {
+                const li = document.createElement('li');
+                const isActive = cat.id === categoryId;
+                li.innerHTML = `<a href="${cat.slug}.html" class="${isActive ? 'active' : ''}">${cat.name}</a>`;
+                navLinks.appendChild(li);
+            });
+
+            const aboutLi = document.createElement('li');
+            aboutLi.innerHTML = '<a href="about.html">关于</a>';
+            navLinks.appendChild(aboutLi);
+
+            // 设置分类背景
+            const category = config.categories.find(c => c.id === categoryId);
+            if (category) {
+                const heroBg = document.getElementById('heroBg');
+                if (category.bgImage) {
+                    heroBg.style.backgroundImage = `url(${category.bgImage})`;
+                } else {
+                    heroBg.style.background = category.bgColor;
+                }
+
+                document.getElementById('travelHero').querySelector('.category-hero-title').textContent = category.name;
+                document.getElementById('travelHero').querySelector('.category-hero-subtitle').textContent = category.description;
+                document.querySelector('.category-badge').textContent = category.name;
+            }
+
+            // 渲染该分类文章
+            const container = document.getElementById('travel-stories');
+            const filteredArticles = currentArticles.filter(a => a.category === categoryId);
+
+            if (filteredArticles.length === 0) {
+                container.innerHTML = '<div class="loading">暂无文章</div>';
+            } else {
+                container.innerHTML = filteredArticles.map((article, index) => `
+                    <article class="travel-story ${index % 2 === 1 ? 'reverse' : ''}" onclick="window.location.href='article.html?id=${article.id}'">
+                        <div class="travel-image-wrapper">
+                            <div class="travel-image">
+                                <div class="travel-image-placeholder">
+                                    <svg viewBox="0 0 24 24" width="64" height="64" fill="currentColor">
+                                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="travel-info">
+                            <div class="travel-location">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                ${article.location || '未知地点'}
+                            </div>
+                            <h2 class="travel-title">${article.title}</h2>
+                            <p class="travel-date">${formatDate(article.date)}</p>
+                            <p class="travel-excerpt">${article.excerpt}</p>
+                            <div class="travel-tags">
+                                ${(article.tags || []).map(tag => `<span class="travel-tag">${tag}</span>`).join('')}
+                            </div>
+                            <div class="travel-cta">
+                                <span class="travel-read-more">阅读全文</span>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+            }
+        });
+    </script>
+</body>
+</html>

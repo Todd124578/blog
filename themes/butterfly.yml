@@ -1,0 +1,245 @@
+# ===========================================
+#   Butterfly Theme Configuration
+#   文档: https://butterfly.js.org/
+# ===========================================
+
+# 导航栏
+menu:
+  首页: / || fas fa-home
+  旅游: /travel/ || fas fa-map
+  工作: /work/ || fas fa-briefcase
+  产品: /product/ || fas fa-box
+  生活: /life/ || fas fa-heart
+  技术: /tech/ || fas fa-code
+  友链: /friends/ || fas fa-link
+  关于: /about/ || fas fa-user
+
+# 首页大图
+index_img: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920
+
+# 首页第一屏大图模式
+index_top_img: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920
+
+# 默认文章封面
+default_cover: https://images.unsplash.com/photo-1518770660439-4636190af475?w=800
+
+# 页面标题
+title:
+  enable: true
+  typewrite: true
+
+# 打字机效果
+subtitle:
+  enable: true
+  text: 记录探索与成长
+  typewriter: true
+  cursor: true
+  cursorChar: '|'
+
+# 搜索
+search:
+  enable: true
+  path: search.xml
+  field: all
+  content: true
+  template: search
+
+# 本地搜索
+local_search:
+  enable: true
+
+# 摘要显示
+excerpt:
+  depth: 0
+  last_Excerpt: true
+
+# 分类栏
+categories:
+  enable: true
+  path: categories
+  num: 8
+
+# 标签栏
+tags:
+  enable: true
+  path: tags
+  num: 10
+
+# 代码高亮
+highlight_theme: light
+highlight_copy: true
+highlight_lang: true
+highlight_shrink: false
+
+# 复制代码按钮
+copy_button:
+  enable: true
+
+# 滚动显示进度条
+reading_progress:
+  enable: true
+  color: "#e8c547"
+  height: 3px
+
+# 回到顶部
+back2top:
+  enable: true
+  percent: true
+  right: 15
+  bottom: 15
+  size: 40
+
+# 夜间模式
+darkmode:
+  enable: true
+  auto: false
+  button: true
+  init: false
+
+# 侧边栏
+aside:
+  enable: true
+  hide: false
+  mobile: true
+  card_author:
+    enable: true
+    name: 刘涛
+    description: 记录探索与成长
+    avatar: /img/avatar.png
+    link:
+  card_announcement:
+    enable: true
+    text: 欢迎来到我的博客！这里记录我的技术探索和生活感悟。
+  card_categories:
+    enable: true
+    num: 8
+  card_tags:
+    enable: true
+    num: 10
+  card_archives:
+    enable: true
+    format: YYYY-MM
+    num: 6
+  card_recent_post:
+    enable: true
+    num: 5
+
+# 右下角消息提示
+toast:
+  enable: true
+  text: 欢迎访问！
+
+# 加载动画
+preloader:
+  enable: true
+  source: /img/preloader.gif
+  duration: 1500
+
+# 页面加载动画
+page_pjax:
+  enable: true
+  exclude: /categories/, /tags/, /music/, /link/, /about/, /gallery/
+
+# 字数统计
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_count: true
+
+# 赞赏二维码
+reward:
+  enable: true
+  text: 喜欢就赞赏一下吧~
+  QR:
+    wechat: /img/wechat.png
+    alipay: /img/alipay.png
+
+# 相关文章
+related_post:
+  enable: true
+  limit: 6
+  date_format: YYYY-MM-DD
+  order_by: date
+
+# 分页导航
+pagination:
+  prev_text: "<"
+  next_text: ">"
+  always_show_ajax: true
+
+# 友链页面
+flink:
+  - class_name: 合作伙伴
+    class_desc: 合作伙伴
+    link_list:
+      - name: 博客名称
+        link: https://example.com
+        avatar: https://example.com/avatar.jpg
+        desc: 博客描述
+
+# 关于页面
+about:
+  avatar: /img/avatar.png
+  banner: /img/banner.jpg
+
+# 友链和书单显示
+hide_categories: true
+
+# 头图和背景图
+default_top_img: https://images.unsplash.com/photo-1518770660439-4636190af475?w=800
+default_bg_img: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920
+
+# Footer设置
+footer:
+  owner:
+    enable: true
+    since: 2026
+  custom_text: 由 Hexo + Butterfly 强力驱动
+
+# 右键菜单
+right_click_menu:
+  enable: true
+  items:
+    - name: 首页
+      link: /
+      icon: fas fa-home
+    - name: 文章目录
+      link: javascript:;
+      icon: fas fa-list-ul
+    - name: 顶部
+      link: "#"
+      icon: fas fa-arrow-up
+
+# 快捷菜单
+quicklink:
+  enable: true
+  delay: 300
+  timeout: 3000
+  ignoreK: true
+
+# PWA
+pwa:
+  enable: false
+
+# 压缩HTML
+html_minifier:
+  enable: false
+  ignore: ''
+
+# 样式注入
+inject:
+  head:
+    - <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
+  style:
+    -
+      <style>
+        :root {
+          --primary: #6366f1;
+          --primary-light: #818cf8;
+          --font-family: 'Outfit', sans-serif;
+        }
+        body {
+          font-family: var(--font-family);
+        }
+      </style>
