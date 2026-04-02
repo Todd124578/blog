@@ -3,9 +3,5 @@
   "outputDirectory": "public",
   "installCommand": "npm install",
   "framework": null,
-  "build": {
-    "env": {
-      "NODE_VERSION": "20"
-    }
-  }
+  "nodeVersion": 24
 }

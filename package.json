@@ -18,8 +18,5 @@
     "hexo-generator-feed": "^3.0.0",
     "hexo-symbols-count-time": "^0.7.1",
     "hexo-deployer-git": "^4.0.0"
-  },
-  "engines": {
-    "node": "24.x"
   }
 }
