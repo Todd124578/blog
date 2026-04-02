@@ -1,7 +1,5 @@
 {
   "buildCommand": "npm run generate",
   "outputDirectory": "public",
-  "installCommand": "npm install",
-  "framework": null,
-  "nodeVersion": 24
+  "installCommand": "npm install"
 }
