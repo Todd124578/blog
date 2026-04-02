@@ -7,19 +7,16 @@
   "scripts": {
     "clean": "hexo clean",
     "server": "hexo server",
-    "build": "hexo g",
-    "generate": "hexo g",
-    "deploy": "hexo deploy"
+    "build": "node ./node_modules/hexo-cli/bin/hexo.js g",
+    "generate": "node ./node_modules/hexo-cli/bin/hexo.js g",
+    "deploy": "hexo d"
   },
   "dependencies": {
-    "hexo": "^7.0.0",
-    "hexo-renderer-marked": "^6.0.0",
-    "hexo-generator-sitemap": "^3.0.1",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-symbols-count-time": "^0.7.1",
-    "hexo-deployer-git": "^4.0.0"
-  },
-  "engines": {
-    "node": ">=18"
+    "hexo": "6.3.0",
+    "hexo-cli": "4.3.2",
+    "hexo-renderer-marked": "6.1.1",
+    "hexo-generator-sitemap": "3.0.1",
+    "hexo-generator-feed": "3.0.0",
+    "hexo-deployer-git": "4.0.0"
   }
 }

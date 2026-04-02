@@ -1,5 +1,6 @@
 {
-  "buildCommand": "npm run generate",
-  "outputDirectory": "public",
-  "installCommand": "npm install"
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null,
+  "framework": null
 }
