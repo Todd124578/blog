@@ -13,16 +13,13 @@
   },
   "dependencies": {
     "hexo": "^7.0.0",
-    "hexo-theme-butterfly": "^4.0.0",
     "hexo-renderer-marked": "^6.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-sitemap": "^3.0.1",
-    "hexo-symbols-count-time": "^0.8.0",
+    "hexo-symbols-count-time": "^0.7.1",
     "hexo-deployer-git": "^4.0.0"
   },
-  "devDependencies": {},
   "engines": {
-    "node": ">=18.0.0"
+    "node": "18"
   }
 }
