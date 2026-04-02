@@ -20,6 +20,6 @@
     "hexo-deployer-git": "^4.0.0"
   },
   "engines": {
-    "node": "18"
+    "node": "24.x"
   }
 }
